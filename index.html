@@ -1,17 +1,26 @@
-<html>
-  <head></head>
-  <body>
-    <center>
-      <h1>シフト表示</h1>
-    </center>
-    <h3>名前を入力してください。</h3>
-    <label for="name">氏名</label>
-      <input type="text" id="name" name="name" required="" minlength="4" maxlength="10" size="10">
-    <h4>表示したい日付(前日or当日)</h4>
-    <select name="day">
-        <option>前日</option>
-        <option>当日</option>
-    </select>
-    <center><marquee width="300" bgcolor="#ffffff">これはテスト用のページです。5/26</marquee></center>
-  </body>
-</html>
+<!--https://qiita.com/masa_mf3/items/305c29b98eca47b0ab82-->
+<!--Import Google Icon Font-->
+<link href= "https://fonts.googleapis.com/icon?family=Material+Icons" rel= "stylesheet">
+<link rel="stylesheet" href="style.css">
+
+	<div id= "chatbot">
+    
+		<div id= "chatbot-header">
+			<div id= "chatbot-logo">シフト表示プログラム</div>
+			<i id= "chatbot-zoom-icon" class="material-icons waves-effect waves-light" onclick= "chatbotZoom()">fullscreen</i>
+		</div>
+    
+		<div id= "chatbot-body">
+			<ul id= "chatbot-ul"></ul>
+		</div>
+    
+		<!--入力場所，送信ボタン-->
+		<form onsubmit= "return false">
+			<div id= "chatbot-footer">
+				<input type= "text" id= "chatbot-text" class= "browser-default" placeholder= "テキストを入力">
+				<input type= "submit" value= "送信" id= "chatbot-submit">
+        <input type= "file" id= "shiftfile" name= "shiftfile">
+			</div>
+		</form>
+    <script type="text/javascript" src="main.js"></script>
+	</div>
