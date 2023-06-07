@@ -340,7 +340,7 @@ a {
 /*---------- ロボット考え中アニメーション ----------*/
 #robot-loading-field {
     display: inline-block;
-    height: 3%;
+    height: 100%;
     width: 26px;
     position: relative;
 }
