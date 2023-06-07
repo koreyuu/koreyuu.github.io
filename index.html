@@ -1,26 +1,36 @@
-<!--https://qiita.com/masa_mf3/items/305c29b98eca47b0ab82-->
-<!--Import Google Icon Font-->
-<link href= "https://fonts.googleapis.com/icon?family=Material+Icons" rel= "stylesheet">
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang= "ja">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv= "content-type" charset= "utf-8">
+
+	<title>AI Chatbot</title>
+	<meta name= "description" content= "JavaScript製のAIチャットボットです。"/>
+	<meta name= "keywords" content= "チャットボット，AI, chatbot, 自動化, JavaScript"/>
+	
+    <link href="style.css" rel="stylesheet">
+    <script src="main.js" defer></script>
+	<!--Import Google Icon Font-->
+	<link href= "https://fonts.googleapis.com/icon?family=Material+Icons" rel= "stylesheet">
+</head>
+<body>
 
 	<div id= "chatbot">
-    
 		<div id= "chatbot-header">
-			<div id= "chatbot-logo">シフト表示プログラム</div>
+			<div id= "chatbot-logo">AI Chatbot</div>
 			<i id= "chatbot-zoom-icon" class="material-icons waves-effect waves-light" onclick= "chatbotZoom()">fullscreen</i>
 		</div>
-    
 		<div id= "chatbot-body">
 			<ul id= "chatbot-ul"></ul>
 		</div>
-    
 		<!--入力場所，送信ボタン-->
-		<form onsubmit= "return false">
+		<form　onsubmit= "return false">
 			<div id= "chatbot-footer">
 				<input type= "text" id= "chatbot-text" class= "browser-default" placeholder= "テキストを入力">
 				<input type= "submit" value= "送信" id= "chatbot-submit">
-        <input type= "file" id= "shiftfile" name= "shiftfile">
 			</div>
 		</form>
-    <script type="text/javascript" src="main.js"></script>
 	</div>
+
+</body>
+</html>
