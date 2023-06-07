@@ -1,9 +1,8 @@
 /*
 【補足】
-- 「ul」の子要素「li」に直接テキストを挿入してもいいですが、デザイン上、今回は「li」の子要素「div」に文字を書いていきます。（吹き出しテキストの「padding」，「line-height」，改行などが複雑になるのを防ぐため）
+- 「ul」の子要素「li」に直接文字を書いてもいいですが、デザイン上、今回は「li」の子要素「divに文字を書いていきます。（吹き出しテキストの「padding」，「line-height」，改行などが複雑になるのを防ぐため）
 - ロボットの吹き出し「li」には「.chatbot-left」というクラスを当て左寄せに、自分の吹き出し「li」には「.chatbot-right」というクラスを当て右寄せにしています。
 */
-
 
 * {
     margin: 0;
@@ -341,7 +340,7 @@ a {
 /*---------- ロボット考え中アニメーション ----------*/
 #robot-loading-field {
     display: inline-block;
-    height: 100%;
+    height: 3%;
     width: 26px;
     position: relative;
 }
