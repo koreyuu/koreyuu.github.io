@@ -50,19 +50,19 @@ const chatList = {
     5: {text: 'あなたのお名前は何ですか？', continue: false, option: 'normal'},
     // userCount2：名前
     6: {text: '', continue: true, option: 'normal'},
-    7: {text: '今日の体調はいかがですか？', continue: false, option: 'normal'},
-    // userCount3：体調
-    8: {text: ['そうですか！', 'わかりました！', '承知致しました！'], continue: true, option: 'random'},
-    9: {text: 'ここで問題です！', continue: true, option: 'normal'},
-    10: {text: {title: 'Q2', question: 'どの山が世界一高いでしょう？', choices: ['エベレスト', 'K2', '富士山'], answer: '0'}, continue: false, option: 'choices'},
-    // userCount4：ユーザーが思う世界一高い山
-    11: {text: {qTrue: '', qFalse:'残念！正解は「エベレスト」でした。'}, continue: true, option: 'normal'},
-    12: {text: '', continue: true, option: 'normal'},
-    13: {text: {title: '満足度調査', question: 'このAIチャットボットの満足度を5段階で教えてください（数字が大きいほど満足度が高いものとします。）。', choices: ['5', '4', '3', '2', '1']}, continue: false, option: 'choices'},
-    // userCount5：満足度
-    14: {text: 'ありがとうございます。最後に、ご感想をお聞かせください。', continue: false, option: 'normal'},
-    // userCount6：感想
-    15: {text: '', continue: false, option: 'normal'}
+//     7: {text: '今日の体調はいかがですか？', continue: false, option: 'normal'},
+//     // userCount3：体調
+//     8: {text: ['そうですか！', 'わかりました！', '承知致しました！'], continue: true, option: 'random'},
+//     9: {text: 'ここで問題です！', continue: true, option: 'normal'},
+//     10: {text: {title: 'Q2', question: 'どの山が世界一高いでしょう？', choices: ['エベレスト', 'K2', '富士山'], answer: '0'}, continue: false, option: 'choices'},
+//     // userCount4：ユーザーが思う世界一高い山
+//     11: {text: {qTrue: '', qFalse:'残念！正解は「エベレスト」でした。'}, continue: true, option: 'normal'},
+//     12: {text: '', continue: true, option: 'normal'},
+//     13: {text: {title: '満足度調査', question: 'このAIチャットボットの満足度を5段階で教えてください（数字が大きいほど満足度が高いものとします。）。', choices: ['5', '4', '3', '2', '1']}, continue: false, option: 'choices'},
+//     // userCount5：満足度
+//     14: {text: 'ありがとうございます。最後に、ご感想をお聞かせください。', continue: false, option: 'normal'},
+//     // userCount6：感想
+//     15: {text: '', continue: false, option: 'normal'}
 };
 
 
@@ -70,10 +70,10 @@ const chatList = {
 // userData === ["何を知りたいですか？", 名前","体調","山の質問","満足度","感想"];
 // userData はユーザーの回答内容の全てを記憶
 function textSpecial() {
-    chatList[6].text = `こんにちは！${userData[1]}さん！`;
-    chatList[11].text.qTrue = `正解！${userData[1]}さん、すごいですね！`;
-    chatList[12].text = `${userData[1]}さん、ありがとうございました。今日はここで終了とさせていただきます。`; 
-    chatList[15].text = `${userData[1]}さんの満足度は「${userData[4]}」，ご感想は「${userData[5]}」ですね！ありがとうございました。`;
+    chatList[6].text = `${userData[1]}さんのシフトを表示します`;
+//     chatList[11].text.qTrue = `正解！${userData[1]}さん、すごいですね！`;
+//     chatList[12].text = `${userData[1]}さん、ありがとうございました。今日はここで終了とさせていただきます。`; 
+//     chatList[15].text = `${userData[1]}さんの満足度は「${userData[4]}」，ご感想は「${userData[5]}」ですね！ありがとうございました。`;
 }
 
 
