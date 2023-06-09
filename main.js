@@ -43,7 +43,7 @@
 // textには投稿文，continueは次も連続で投稿するかどうか，optionは普通の投稿or選択肢orランダム投稿など
 const chatList = {
     1: {text: 'シフトを表示します', continue: true, option: 'normal'},
-    2: {text: '会話内容は管理者へ送信されません。このプログラムはhttps://qiita.com/masa_mf3/items/305c29b98eca47b0ab8を参考に作成しています。', continue: true, option: 'normal'},
+    2: {text: '会話内容は管理者へ送信されません。このプログラムはhttps://qiita.com/masa_mf3/items/305c29b98eca47b0ab82を参考に作成しています。', continue: true, option: 'normal'},
     3: {text: {question: 'どの日のシフトを知りたいですか？', choices: ['BKC前日', 'BKC当日']}, continue: false, option: 'choices', questionNextSupport: true}, // questionNextSupportは次に質問に対する詳細を投稿するかどうか
     // userCount1：ユーザーが思う世界一高い山
     4: {text: ['BKC前日シフトを表示します', 'BKC当日シフトを表示します'], continue: true, option: 'normal'},
