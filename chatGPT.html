@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ChatGPT</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .message {
+      margin-bottom: 20px;
+    }
+    .user-message {
+      background-color: #e6f7ff;
+    }
+    .assistant-message {
+      background-color: #f2f2f2;
+    }
+    .message .content {
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .message .user {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .input-container {
+      margin-top: 20px;
+    }
+    .input-container input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    .input-container button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="message assistant-message">
+      <div class="content">
+        <div class="user">Assistant</div>
+        <div>Hello! How can I assist you today?</div>
+      </div>
+    </div>
+    <div id="chatContainer"></div>
+    <div class="input-container">
+      <input type="text" id="userInput" placeholder="Type your message here..." autofocus>
+      <button id="sendButton">Send</button>
+    </div>
+  </div>
+
+  <script>
+    // メッセージを追加する関数
+    function addMessage(message, isUser) {
+      const chatContainer = document.getElementById('chatContainer');
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message');
+      messageDiv.classList.add(isUser ? 'user-message' : 'assistant-message');
+      const contentDiv = document.createElement('div');
+      contentDiv.classList.add('content');
+      const userDiv = document.createElement('div');
+      userDiv.classList.add('user');
+      userDiv.textContent = isUser ? 'You' : 'Assistant';
+      const messageContentDiv = document.createElement('div');
+      messageContentDiv.textContent = message;
+
+      contentDiv.appendChild(userDiv);
+      contentDiv.appendChild(messageContentDiv);
+      messageDiv.appendChild(contentDiv);
+      chatContainer.appendChild(messageDiv);
+    }
+
+    // ユーザーの入力を処理する関数
+    function processUserInput() {
+      const userInput = document.getElementById('userInput');
+      const message = userInput.value.trim();
+      if (message !== '') {
+        addMessage(message, true);
+        userInput.value = '';
+        // ユーザーの入力に対する応答を生成するAPIの呼び出し等の処理を追加する
+        // ここではダミーの応答を追加している
+        setTimeout(function() {
+          addMessage('This is a dummy response.', false);
+        }, 500);
+      }
+      userInput.focus();
+    }
+
+    // ユーザーの入力を送信するボタンのクリックイベントリスナーを設定する
+    const sendButton = document.getElementById('sendButton');
+    sendButton.addEventListener('click', processUserInput);
+
+    // ユーザーの入力を送信するフォームのEnterキー押下イベントリスナーを設定する
+    const userInput = document.getElementById('userInput');
+    userInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        processUserInput();
+        event.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
