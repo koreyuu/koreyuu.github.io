@@ -1,15 +1,15 @@
-// // CSVデータ
-// const csvData = `名前,年齢,メールアドレス
-// Alice,25,alice@example.com
-// Bob,30,bob@example.com
-// Charlie,35,charlie@example.com
-// Dave,40,dave@example.com
-// Eve,45,eve@example.com`;
+// CSVデータ
+const csvData = `名前,年齢,メールアドレス
+Alice,25,alice@example.com
+Bob,30,bob@example.com
+Charlie,35,charlie@example.com
+Dave,40,dave@example.com
+Eve,45,eve@example.com`;
 
 function csv2Array(filePath) { //csvﾌｧｲﾙﾉ相対ﾊﾟｽor絶対ﾊﾟｽ
 	var csvData = new Array();
 	var data = new XMLHttpRequest();	
-	data.open("GET", filePath, true); //true:非同期,false:同期
+	data.open("GET", filePath, false); //true:非同期,false:同期
 	data.send(null);
 
 	var LF = String.fromCharCode(10); //改行ｺｰﾄﾞ
@@ -51,8 +51,8 @@ function searchName() {
     if (name.trim() === '') {
         return; // 名前が空の場合は処理しない
     }
-    var csv = csv2Array('https://docs.google.com/spreadsheets/d/1xATOWaglUmmenhP9p7KApRd2aw9V7D5y/edit#gid=1903582980/pub?gid=0&single=true&output=csv');
-    const data = csv;
+
+    const data = parseCSV(csvData);
     const matchingRows = data.filter(row => row['名前'] === name);
 
     const chatMessages = document.getElementById('chat-messages');
@@ -83,3 +83,5 @@ document.getElementById('name-input').addEventListener('keydown', function(event
         searchName(); // 名前の検索を実行
     }
 });
+
+console.log(csvData);
