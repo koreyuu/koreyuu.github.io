@@ -1,0 +1,17 @@
+const jsonData = [
+    {
+        "name": "John",
+        "time": "9:00 AM",
+        "task": "Meeting"
+    },
+    {
+        "name": "Jane",
+        "time": "10:30 AM",
+        "task": "Presentation"
+    },
+    {
+        "name": "Bob",
+        "time": "2:00 PM",
+        "task": "Development"
+    }
+];

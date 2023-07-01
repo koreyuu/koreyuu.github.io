@@ -1,47 +1,20 @@
-// CSVデータ
-const csvData = `名前,年齢,メールアドレス
-Alice,25,alice@example.com
-Bob,30,bob@example.com
-Charlie,35,charlie@example.com
-Dave,40,dave@example.com
-Eve,45,eve@example.com`;
-
-function csv2Array(filePath) { //csvﾌｧｲﾙﾉ相対ﾊﾟｽor絶対ﾊﾟｽ
-	var csvData = new Array();
-	var data = new XMLHttpRequest();	
-	data.open("GET", filePath, false); //true:非同期,false:同期
-	data.send(null);
-
-	var LF = String.fromCharCode(10); //改行ｺｰﾄﾞ
-	var lines = data.responseText.split(LF);
-	for (var i = 0; i < lines.length;++i) {
-		var cells = lines[i].split(",");
-		if( cells.length != 1 ) {
-			csvData.push(cells);
-		}
-	}
-	return csvData;
-}
-
-// CSVデータを行ごとに分割し、配列に変換する関数
-function parseCSV(csv) {
-    const lines = csv.split('\n');
-    const headers = lines[0].split(',');
-    const data = [];
-  
-    for (let i = 1; i < lines.length; i++) {
-        const row = {};
-        const values = lines[i].split(',');
-  
-        for (let j = 0; j < headers.length; j++) {
-            row[headers[j]] = values[j];
-        }
-  
-        data.push(row);
+const jsonData = [
+    {
+        "name": "John",
+        "time": "9:00 AM",
+        "task": "Meeting"
+    },
+    {
+        "name": "Jane",
+        "time": "10:30 AM",
+        "task": "Presentation"
+    },
+    {
+        "name": "Bob",
+        "time": "2:00 PM",
+        "task": "Development"
     }
-  
-    return data;
-}
+];
 
 // 名前を検索し、結果を表示する関数
 function searchName() {
@@ -52,8 +25,7 @@ function searchName() {
         return; // 名前が空の場合は処理しない
     }
 
-    const data = parseCSV(csvData);
-    const matchingRows = data.filter(row => row['名前'] === name);
+    const matchingRows = jsonData.filter(row => row.name === name);
 
     const chatMessages = document.getElementById('chat-messages');
     const userMessage = document.createElement('div');
@@ -62,10 +34,12 @@ function searchName() {
     chatMessages.appendChild(userMessage);
 
     if (matchingRows.length > 0) {
-        const assistantMessage = document.createElement('div');
-        assistantMessage.classList.add('assistant-message');
-        assistantMessage.innerHTML = `<p>Assistant: ${JSON.stringify(matchingRows)}</p>`;
-        chatMessages.appendChild(assistantMessage);
+        matchingRows.forEach(row => {
+            const assistantMessage = document.createElement('div');
+            assistantMessage.classList.add('assistant-message');
+            assistantMessage.innerHTML = `<p>Assistant: 氏名: ${row.name}, 時刻: ${row.time}, 仕事内容: ${row.task}</p>`;
+            chatMessages.appendChild(assistantMessage);
+        });
     } else {
         const assistantMessage = document.createElement('div');
         assistantMessage.classList.add('assistant-message');
@@ -75,7 +49,6 @@ function searchName() {
 
     nameInput.value = '';
 }
-
 // Enterキーのイベントハンドラを追加
 document.getElementById('name-input').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
@@ -83,5 +56,3 @@ document.getElementById('name-input').addEventListener('keydown', function(event
         searchName(); // 名前の検索を実行
     }
 });
-
-console.log(csvData);
