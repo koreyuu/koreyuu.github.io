@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ChatGPT風対話サービス</title>
+    <title>shift</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div id="chat-container">
-        <div id="chat-messages"></div>
-        <div id="user-input">
-            <input type="text" id="name-input" placeholder="名前を入力してください">
-            <button onclick="searchName()">送信</button>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>ChatG〇T風シフト表示</h2>
+        </div>
+        <div class="chat-body">
+            <div class="chat-messages" id="chat-messages">
+                <div class="assistant-message">
+                    <p>Assistant: 名前を入力してください。</p>
+                </div>
+            </div>
+            <div class="user-input">
+                <input type="text" id="name-input" placeholder="名前を入力してください">
+                <button onclick="searchName()">検索</button>
+            </div>
         </div>
     </div>
-
     <script src="main.js"></script>
 </body>
 </html>
-
