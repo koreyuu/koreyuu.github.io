@@ -51,7 +51,7 @@ function searchName() {
     if (name.trim() === '') {
         return; // 名前が空の場合は処理しない
     }
-    var csv = csv2Array('./csv/BKC_CSV.csv');
+    var csv = csv2Array('https://docs.google.com/spreadsheets/d/1xATOWaglUmmenhP9p7KApRd2aw9V7D5y/edit#gid=1903582980/pub?gid=0&single=true&output=csv');
     const data = csv;
     const matchingRows = data.filter(row => row['名前'] === name);
 
