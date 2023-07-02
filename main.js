@@ -27,51 +27,59 @@ function csvToArray(path) {
   
       const data = csvToArray('https://docs.google.com/spreadsheets/d/e/2PACX-1vRd6SSkeoF4Q7GpqTp_5l9vg5_3fBAcmaPW55qq2Sg-VuVznkRXusKidnTxmbVGoHIKYuH5RHB9HTkN/pub?gid=213972052&single=true&output=csv');
   
-      let matchingRow = -1; // 該当する行のインデックス（見つからなかった場合は-1）
-      let matchingColumn = -1; // 該当する列のインデックス（見つからなかった場合は-1）
+  let matchingRow = -1; // 該当する行のインデックス（見つからなかった場合は-1）
+  let matchingColumn = -1; // 該当する列のインデックス（見つからなかった場合は-1）
   
-      // 名前を検索
-      for (let i = 0; i < data.length; i++) {
-          const row = data[i];
-          for (let j = 0; j < row.length; j++) {
-              if (row[j] === name) {
-                  matchingRow = i;
-                  matchingColumn = j;
-                  break;
-              }
-          }
-          if (matchingRow !== -1) {
-              break;
-          }
+  // 名前を検索
+  for (let i = 0; i < data.length; i++) {
+    const row = data[i];
+    for (let j = 0; j < row.length; j++) {
+      if (row[j] === name) {
+        matchingRow = i;
+        matchingColumn = j;
+        break;
       }
-    
-    //for文でmarchingRowの値を使用してシフトを一つずつ取得していく
-    for (let x=1; x<116; x++){
-      
     }
-    
+    if (matchingRow !== -1) {
+      break;
+    }
+  }
   
-      const chatMessages = document.getElementById('chat-messages');
-      const userMessage = document.createElement('div');
-      userMessage.classList.add('user-message');
-      userMessage.innerHTML = `<p>User: ${name}</p>`;
-      chatMessages.appendChild(userMessage);
+  const chatMessages = document.getElementById('chat-messages');
+  const userMessage = document.createElement('div');
+  userMessage.classList.add('user-message');
+  userMessage.innerHTML = `<p>User: ${name}</p>`;
+  chatMessages.appendChild(userMessage);
   
-      if (matchingRow !== -1) {
-          const matchingValues = data[matchingRow].slice(1); // 該当する行の2列目以降の値を取得
+  if (matchingRow !== -1) {
+    const matchingValues = data[matchingRow].slice(1); // 該当する行の2列目以降の値を取得
   
-          const assistantMessage = document.createElement('div');
-          assistantMessage.classList.add('assistant-message');
-          assistantMessage.innerHTML = `<p>Assistant: 該当する名前が見つかりました。</p>${matchingValues.map(value => `<p>${value}</p>`).join('')}`;
-          chatMessages.appendChild(assistantMessage);
-      } else {
-          const assistantMessage = document.createElement('div');
-          assistantMessage.classList.add('assistant-message');
-          assistantMessage.innerHTML = `<p>Assistant: 該当する名前は見つかりませんでした。</p>`;
-          chatMessages.appendChild(assistantMessage);
-      }
+    const assistantMessage = document.createElement('div');
+    assistantMessage.classList.add('assistant-message');
   
-      nameInput.value = '';
+    let messageHTML = `<p>Assistant: ${name}さんのシフトを表示します。</p>`;
+  
+    for (let i = 0; i < matchingValues.length; i++) {
+      const hour = Math.floor(i / 6) + 5; // 時間（5から始まる）
+      const minute = (i % 6) * 10; // 分（0, 10, 20, 30, 40, 50）
+      const hourString = hour.toString().padStart(2, '0'); // 時間を2桁にする
+      const minuteString = minute.toString().padStart(2, '0'); // 分を2桁にする
+      const timeString = `${hourString}:${minuteString}`;
+  
+      const value = matchingValues[i];
+      messageHTML += `<p>${timeString} ${value}</p>`;
+    }
+  
+    assistantMessage.innerHTML = messageHTML;
+    chatMessages.appendChild(assistantMessage);
+  } else {
+    const assistantMessage = document.createElement('div');
+    assistantMessage.classList.add('assistant-message');
+    assistantMessage.innerHTML = `<p>Assistant: 該当する名前は見つかりませんでした。</p>`;
+    chatMessages.appendChild(assistantMessage);
+  }
+  
+  nameInput.value = '';
   }
   // Enterキーのイベントハンドラを追加
   document.getElementById('name-input').addEventListener('keydown', function(event) {
