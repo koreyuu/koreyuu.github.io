@@ -21,6 +21,8 @@ body {
 
 .chat-body {
     padding: 20px;
+    height: 300px;
+    overflow-y: scroll;
 }
 
 .chat-messages {
